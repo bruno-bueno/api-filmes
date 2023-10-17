@@ -1,0 +1,54 @@
+import { useEffect, useState } from "react";
+import { BarraLateral, Container, Movie, MovieList, BarraSuperior } from "./style";
+import { Link } from "react-router-dom";
+
+function Home() {
+    const imagePath = "https://image.tmdb.org/t/p/w500";
+
+    const [movies, setMovies] = useState([]);
+    const KEY = process.env.REACT_APP_KEY;
+    useEffect(() => {
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=pt-BR`)
+            .then((response) => response.json())
+            .then((data) => {
+                setMovies(data.results);
+            });
+    }, [KEY]);
+
+    return (
+        <Container>
+            <BarraLateral>
+            
+            </BarraLateral>
+            <BarraSuperior>
+                <h1 className="mx-5">BUENO FILMES</h1>
+                <form className="input-group mb-3 w-25">
+                    <input type="text" className="form-control" placeholder="Pesquisar filmes..." />
+                    <button type="submit" className="btn btn-outline-secondary">Pesquisar</button>
+                </form>
+            
+            </BarraSuperior>
+
+            <MovieList>
+                {movies.map((movie) => {
+                    return (
+                        <Movie key={movie.id}>
+                            <Link to={`/${movie.id}`}>
+                            <img
+                                src={`${imagePath}${movie.poster_path}`}
+                                alt="{movie.title}"
+                            />
+                            <span>{movie.title}</span>
+
+                            </Link>
+                        </Movie>
+                    );
+                })}
+            </MovieList>
+
+            
+        </Container>
+    );
+}
+
+export default Home;
