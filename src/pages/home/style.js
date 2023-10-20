@@ -1,28 +1,14 @@
 import styled from "styled-components";
 
-export const BarraLateral = styled.div`
-    background-color: #5A5F61;
-    width: 5vw;
-    height: 100vh; 
-    position: fixed;
-`;
 
 export const BarraSuperior = styled.div`
-    background-color: #113049;
+    background-color: #1C1C1C;
     width: 100vw;
     height: 10vh; 
-    position: fixed;
+    position: absolute;
     display: flex;
     margin-top: -10vh;
-    h1 {
-        display: flex;
-        align-items: center;
-        float: left;
-    }
-    form {
-        display: flex;
-        align-items: center;
-    }
+   
 `;
 
 export const Container = styled.div`
@@ -34,7 +20,6 @@ export const MovieList = styled.ul`
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     column-gap: 3rem;
     row-gap: 4rem;
-    margin-left: 5rem;
     margin-top: 10vh;
 `;
 
@@ -43,6 +28,7 @@ export const Movie = styled.li`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5vh;
     
     img {
         width: 180px;
@@ -66,4 +52,3 @@ export const Movie = styled.li`
         transform: scale(1.1);
     }
 `;
-
